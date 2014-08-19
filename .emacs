@@ -42,11 +42,10 @@
 (global-set-key [f2]            'save-buffer)
 (global-set-key [f3]            'find-file)
 (global-set-key [f6]            'next-multiframe-window)
-(global-set-key [f12] 'iwb)
+(global-set-key [f12]           'iwb)
 (global-set-key [delete]        'delete-char)
 (global-set-key [home]          'beginning-of-line)
 (global-set-key [end]           'end-of-line)
 
 ;; Load theme
 (load-theme 'zenburn t)
-

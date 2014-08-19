@@ -1,0 +1,22 @@
+#!/bin/sh
+
+if [ $1 ]
+then
+    find .      \(\
+        -name $1 \
+        \) \
+        -print -exec /bin/rm {} \;
+else
+    find .      \(\
+        -name "*~" \
+        -or -name ".*~" \
+        -or -name ".lsm" \
+        -or -name "lock" \
+        -or -name "*#" \
+        -or -name ".nfs*" \
+        -or -name "dead.letter" \
+        -or -name ".*#" \
+        -or -name "*.core" \
+        \) \
+        -print -exec /bin/rm {} \;
+fi

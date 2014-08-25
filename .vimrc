@@ -7,3 +7,4 @@ set incsearch             " incremental searching
 set ruler                 " Always show info along bottom.
 set noautoindent          " No auto-indent
 set background=dark
+colorscheme zenburn

@@ -6,5 +6,6 @@ set history=50
 set incsearch             " incremental searching
 set ruler                 " Always show info along bottom.
 set noautoindent          " No auto-indent
+syntax enable
 set background=dark
-colorscheme zenburn
+colorscheme solarized

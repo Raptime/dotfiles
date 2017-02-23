@@ -1,6 +1,3 @@
-[user]
-	name = Raptime
-	email = Raptime@users.noreply.github.com
 [push]
 	default = matching
 [core]

@@ -29,4 +29,3 @@ case "$TERM" in
         ;;
 esac
 
-PATH+=':~/bin'

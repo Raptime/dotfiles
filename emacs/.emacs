@@ -1,7 +1,3 @@
-;; Paths
-(add-to-list 'load-path "~/.emacs.d/scripts/")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 
 ;; Remove menu
 (menu-bar-mode -1)
@@ -48,5 +44,3 @@
 (global-set-key [home]          'beginning-of-line)
 (global-set-key [end]           'end-of-line)
 
-;; Load theme
-(load-theme 'solarized-dark t)

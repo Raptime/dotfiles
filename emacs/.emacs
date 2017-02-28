@@ -1,32 +1,40 @@
-;; Remove menu
-(menu-bar-mode -1)
-;;(toggle-scroll-bar -1)
-;;(tool-bar-mode -1)
+;; init.el --- Emacs configuration
 
-;; Remove startup message
-(setq inhibit-startup-echo-area-message t)
-(setq inhibit-startup-message t)
+;; INSTALL PACKAGES
+;; --------------------------------------
 
-;; Cosmetics
-(column-number-mode t)
-(global-font-lock-mode t)
-(show-paren-mode t)
-(transient-mark-mode t)
-(setq-default indent-tabs-mode nil)
-(setq my_msg (concat "Welcome " (user-full-name)))
+(require 'package)
+
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+
+(package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar myPackages
+  '(better-defaults     ;; better defaults
+    elpy        ;; python mode
+    material-theme)) ;; best theme
+
+(mapc #'(lambda (package)
+          (unless (package-installed-p package)
+            (package-install package)))
+      myPackages)
+
+;; BASIC CUSTOMIZATION
+;; --------------------------------------
+
+(setq inhibit-startup-message t) ;; hide the startup message
+(load-theme 'material t) ;; load material theme
+(global-linum-mode t) ;; enable line numbers globally
+
+(column-number-mode t) ;; Show column number as well as line
 (set-fill-column 80)
+(setq default-major-mode 'text-mode) ;; text mode for new buffers
 
-;; Backup files
-(setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
-(setq delete-old-versions t
-      kept-new-versions 6
-      kept-old-versions 2
-      version-control t)
-
-;; Make text mode the default for new buffers
-(setq default-major-mode 'text-mode)
-
-;; Functions
+;; FUNCTIONS
+;; --------------------------------------
 (defun iwb ()
   "indent whole buffer"
   (interactive)
@@ -34,12 +42,16 @@
   (indent-region (point-min) (point-max) nil)
   (untabify (point-min) (point-max)))
 
-;; Key Bindings
-(global-set-key [f2]            'save-buffer)
-(global-set-key [f3]            'find-file)
-(global-set-key [f6]            'next-multiframe-window)
-(global-set-key [f12]           'iwb)
-(global-set-key [delete]        'delete-char)
-(global-set-key [home]          'beginning-of-line)
-(global-set-key [end]           'end-of-line)
+;; KEY BINDINGS
+;; --------------------------------------
 
+(global-set-key [f6]            'next-multiframe-window)
+(global-set-key [f7]            'next-buffer)
+(global-set-key [f12]           'iwb)
+
+;; PYTHON CONFIGURATION
+;; --------------------------------------
+
+(elpy-enable)
+
+;; init.el ends here

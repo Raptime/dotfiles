@@ -14,8 +14,7 @@
 
 (defvar myPackages
   '(better-defaults     ;; better defaults
-    elpy        ;; python mode
-    solarized-theme)) ;; best theme
+    solarized-theme))   ;; save my eyes theme
 
 (mapc #'(lambda (package)
           (unless (package-installed-p package)
@@ -26,13 +25,12 @@
 ;; --------------------------------------
 
 (setq inhibit-startup-message t) ;; hide the startup message
-(load-theme 'solarized-dark t) ;; load solarized theme
-(global-linum-mode t) ;; enable line numbers globally
+(load-theme 'solarized-dark t)   ;; load solarized theme
+(global-linum-mode t)            ;; enable line numbers globally
+(column-number-mode t)           ;; Show column number as well as line
 
-(column-number-mode t) ;; Show column number as well as line
-(set-fill-column 80)
 (setq default-major-mode 'text-mode) ;; text mode for new buffers
-(defalias 'yes-or-no-p 'y-or-n-p) ;; replace yes or no with y or n
+(defalias 'yes-or-no-p 'y-or-n-p)    ;; replace yes or no with y or n
 
 ;; FUNCTIONS
 ;; --------------------------------------
@@ -53,6 +51,6 @@
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
 
-(elpy-enable)
+;;(elpy-enable)
 
 ;; init.el ends here

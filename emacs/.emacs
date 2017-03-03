@@ -15,7 +15,7 @@
 (defvar myPackages
   '(better-defaults     ;; better defaults
     elpy        ;; python mode
-    material-theme)) ;; best theme
+    solarized-theme)) ;; best theme
 
 (mapc #'(lambda (package)
           (unless (package-installed-p package)
@@ -26,7 +26,7 @@
 ;; --------------------------------------
 
 (setq inhibit-startup-message t) ;; hide the startup message
-;;(load-theme 'material t) ;; load material theme
+(load-theme 'solarized-dark t) ;; load solarized theme
 (global-linum-mode t) ;; enable line numbers globally
 
 (column-number-mode t) ;; Show column number as well as line

@@ -32,6 +32,10 @@
 (setq default-major-mode 'text-mode) ;; text mode for new buffers
 (defalias 'yes-or-no-p 'y-or-n-p)    ;; replace yes or no with y or n
 
+(setq linum-format "%d ")	;; add a space after line numbers
+
+(set-face-attribute 'default nil :height 90)
+
 ;; FUNCTIONS
 ;; --------------------------------------
 (defun iwb ()

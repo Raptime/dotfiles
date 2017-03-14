@@ -68,3 +68,51 @@
 *color13:                 S_violet
 *color14:                 S_base1
 *color15:                 S_base3
+
+
+! URxvt customization
+
+! General settings
+URxvt.saveLines:          2000
+URxvt.scrollBar:          False
+URxvt.scrollstyle:        rxvt
+URxvt.termName:           xterm-256color
+URxvt.urgentOnBell:       True
+URxvt.cursorBlink:        False
+
+! Fonts
+
+!Courier
+!URxvt.font: xft:Courier-10
+
+!Inconsolata
+URxvt.font: xft:Inconsolata-12
+URxvt.boldFont: xft:Inconsolata-12
+URxvt.letterSpace: -1
+
+!Inconsolata-g
+!URxvt.font: xft:InconsolataG-10
+!URxvt.letterSpace: -1
+
+!Anonymous Pro
+!URxvt.font: xft:Anonymous\ Pro-12
+!URxvt.letterSpace: -1
+
+!Monaco
+!URxvt.font: xft:Monaco-10
+!URxvt.letterSpace: -1
+
+!Droid Sans Mono
+!URxvt.font: xft:Droid Sans Mono-10
+!URxvt.letterSpace: -1
+
+!DejaVu Sans
+!URxvt.font: xft:DejaVu Sans Mono-10
+!URxvt.letterSpace: -1
+
+!Manospace
+!URxvt.font: xft:Monospace-10
+!URxvt.letterSpace: -1
+
+!Terminus
+!URxvt.font: xft:Terminus-10

@@ -34,7 +34,7 @@
 
 (setq linum-format "%d ")	;; add a space after line numbers
 
-(set-face-attribute 'default nil :height 90)
+(set-face-attribute 'default nil :height 80)
 
 ;; FUNCTIONS
 ;; --------------------------------------

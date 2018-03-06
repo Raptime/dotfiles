@@ -23,7 +23,7 @@ ulimit -S -c 0        # Don't want any coredumps
 set -o notify
 shopt -s checkwinsize
 
-PS1='\[\e[0;34m\][\[\e[0m\]\u@\h \w\[\e[0;34m\]]\[\e[0m\]\$ '
+PS1='\[\e[0;34m\][\[\e[0m\]\u@\h \W\[\e[0;34m\]]\[\e[0m\]\$ '
 case "$TERM" in
     xterm*|rxvt*)
         PS1="\[\e]0;\u@\h: \w\a\]$PS1"

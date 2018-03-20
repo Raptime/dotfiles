@@ -31,12 +31,14 @@
 
 (setq default-major-mode 'text-mode) ;; text mode for new buffers
 (defalias 'yes-or-no-p 'y-or-n-p)    ;; replace yes or no with y or n
+(setq ring-bell-function 'ignore)    ;; disable the bell
 
 (setq linum-format "%d ")	;; add a space after line numbers
+(menu-bar-mode -1)		;; disable the menu bar
+(tool-bar-mode -1)		;; disable the tool bar
 
-(set-face-attribute 'default nil :height 90)
+(set-face-attribute 'default nil :font "DejaVu Sans Mono-9") ;; set default font
 
-(setq ring-bell-function 'ignore)
 
 ;; FUNCTIONS
 ;; --------------------------------------
@@ -54,21 +56,3 @@
 (global-set-key [f7]            'next-buffer)
 (global-set-key [f12]           'iwb)
 
-;; PYTHON CONFIGURATION
-;; --------------------------------------
-
-;;(elpy-enable)
-
-;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (solarized-theme better-defaults))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

@@ -21,6 +21,7 @@ bind '"\e[B": history-search-forward'
 
 ulimit -S -c 0        # Don't want any coredumps
 set -o notify
+shopt -s cmdhist
 shopt -s checkwinsize
 
 PS1='\[\e[0;34m\][\[\e[0m\]\u@\h \W\[\e[0;34m\]]\[\e[0m\]\$ '

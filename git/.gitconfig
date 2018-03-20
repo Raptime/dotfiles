@@ -1,30 +1,19 @@
-[push]
-	default = matching
+[alias]
+	co = checkout
+
+[user]
+	name = Raptime
+	email = nico@yopyop.org
+
 [core]
 	editor = vi
 	filemode = false
-[color]
-	ui = auto
-[credential]
-	helper = cache
+
+[push]
+	default = simple
+
 [merge]
 	tool = vimdiff
-[mergetool]
-	keeptemporaries = false
-	keepbackups = false
-	prompt = false
-	trustexitcode = false
-[alias]
-	last = log -1 --stat
-	cp = cherry-pick
-	co = checkout
-	cl = clone
-	ci = commit
-	st = status -sb
-	br = branch
-	unstage = reset HEAD --
-	dc = diff --cached
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
 
-[include]
-	path = ~/.gitconfig.local
+[color]
+	ui = auto

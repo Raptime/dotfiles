@@ -36,6 +36,8 @@
 
 (set-face-attribute 'default nil :height 90)
 
+(setq ring-bell-function 'ignore)
+
 ;; FUNCTIONS
 ;; --------------------------------------
 (defun iwb ()

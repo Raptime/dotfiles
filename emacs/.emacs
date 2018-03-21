@@ -39,6 +39,8 @@
 
 (set-face-attribute 'default nil :font "DejaVu Sans Mono-9") ;; set default font
 
+(setq backup-directory-alist `(("." . "~/.saves"))) ;; move backups out of the current folder
+
 
 ;; FUNCTIONS
 ;; --------------------------------------

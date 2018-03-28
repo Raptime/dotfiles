@@ -26,6 +26,7 @@
 
 (setq inhibit-startup-message t) ;; hide the startup message
 (load-theme 'solarized-dark t)   ;; load solarized theme
+(custom-set-faces (if (not window-system) '(default ((t (:background "nil"))))))
 (global-linum-mode t)            ;; enable line numbers globally
 (column-number-mode t)           ;; Show column number as well as line
 
@@ -35,7 +36,7 @@
 
 (setq linum-format "%d ")	;; add a space after line numbers
 (menu-bar-mode -1)		;; disable the menu bar
-(tool-bar-mode -1)		;; disable the tool bar
+(if (functionp 'tool-bar-mode) (tool-bar-mode -1))		;; disable the tool bar
 
 (set-face-attribute 'default nil :font "DejaVu Sans Mono-9") ;; set default font
 

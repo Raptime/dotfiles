@@ -1,7 +1,10 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth #ignoredups + ignorespace
+export HISTFILESIZE=10000
+export HISSIZE=10000
+export HISTTIMEFORMAT='%F %T '
 
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
@@ -23,6 +26,7 @@ ulimit -S -c 0        # Don't want any coredumps
 set -o notify
 shopt -s cmdhist
 shopt -s checkwinsize
+shopt -s histappend
 
 PS1='\[\e[0;34m\][\[\e[0m\]\u@\h \W\[\e[0;34m\]]\[\e[0m\]\$ '
 case "$TERM" in

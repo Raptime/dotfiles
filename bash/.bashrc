@@ -28,7 +28,30 @@ shopt -s cmdhist
 shopt -s checkwinsize
 shopt -s histappend
 
-PS1='\[\e[0;34m\][\[\e[0m\]\u@\h \W\[\e[0;34m\]]\[\e[0m\]\$ '
+
+#prompt color
+__context_color_count() {
+  printf "%d" $(infocmp -1 | sed -n -e "s/^\t*colors#\([0-9]x\?[0-9]*\),.*/\1/p")
+}
+
+__context_color_hash() {
+  eval "whoami; hostname" | sum | cut -d' ' -f1
+}
+
+__context_color_number() {
+  expr 1 + $(__context_color_hash) % $(expr $(__context_color_count) - 1)
+}
+
+__context_color_sequence() {
+  local sequence="$(tput setaf $(__context_color_number))"
+  sequence="\[${sequence}\]"
+  echo "$sequence"
+}
+PCOLOR="$(__context_color_sequence)"
+PRESET="\[\e[0m\]"
+
+#PS1='\[\e[0;34m\][\[\e[0m\]\u@\h \W\[\e[0;34m\]]\[\e[0m\]\$ '
+PS1="$PCOLOR[$PRESET\u@\h \W$PCOLOR]$PRESET\$ "
 case "$TERM" in
     xterm*|rxvt*)
         PS1="\[\e]0;\u@\h: \w\a\]$PS1"

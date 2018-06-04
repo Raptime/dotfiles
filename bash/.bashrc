@@ -40,21 +40,23 @@ __context_color_hash() {
 
 __context_color_number() {
   expr 1 + $(__context_color_hash) % $(expr $(__context_color_count) - 1)
+#  expr 1 + $(__context_color_hash) % 8
 }
 
 __context_color_sequence() {
   local sequence="$(tput setaf $(__context_color_number))"
-  sequence="\[${sequence}\]"
+#  sequence="\[${sequence}\]"
   echo "$sequence"
 }
 PCOLOR="$(__context_color_sequence)"
-PRESET="\[\e[0m\]"
+PRESET="$(tput sgr0)"
 
 #PS1='\[\e[0;34m\][\[\e[0m\]\u@\h \W\[\e[0;34m\]]\[\e[0m\]\$ '
-PS1="$PCOLOR[$PRESET\u$PCOLOR@$PRESET\h \W$PCOLOR]$PRESET\$ "
+#PS1="$PCOLOR[$PRESET\u$PCOLOR@$PRESET\h \W$PCOLOR]$PRESET\$ "
+PS1="$PCOLOR\u@\h$PRESET:\W\\$ "
 case "$TERM" in
     xterm*|rxvt*)
-        PS1="\[\e]0;\u@\h: \w\a\]$PS1"
+        PS1="\[\e]0;\u@\h:\w\a\]$PS1"
         ;;
     *)
         ;;

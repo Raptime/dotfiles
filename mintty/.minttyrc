@@ -1,4 +1,4 @@
-FontHeight=8
+FontHeight=10
 Columns=80
 Rows=24
 PgUpDnScroll=no
@@ -31,8 +31,8 @@ BoldAsFont=-1
 MiddleClickAction=extend
 RightClickAction=paste
 CursorBlinks=no
-Font=Courier New
-Locale=C
+Font=Consolas
+Locale=en_US
 Charset=UTF-8
 BellType=0
 BellFlash=yes

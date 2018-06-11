@@ -45,15 +45,17 @@ __context_color_number() {
 
 __context_color_sequence() {
   local sequence="$(tput setaf $(__context_color_number))"
-#  sequence="\[${sequence}\]"
+  sequence="\[${sequence}\]"
   echo "$sequence"
 }
 PCOLOR="$(__context_color_sequence)"
-PRESET="$(tput sgr0)"
+PRESET="\[$(tput sgr0)\]"
+#PRESET="\[\e[0m\]"
 
 #PS1='\[\e[0;34m\][\[\e[0m\]\u@\h \W\[\e[0;34m\]]\[\e[0m\]\$ '
-#PS1="$PCOLOR[$PRESET\u$PCOLOR@$PRESET\h \W$PCOLOR]$PRESET\$ "
-PS1="$PCOLOR\u@\h$PRESET:\W\\$ "
+#PS1="$PCOLOR[$PRESET\u@\h \W$PCOLOR]$PRESET\\$ "
+#PS1="\u@\h:\W\\$ "
+PS1="\u$PCOLOR@$PRESET\h$PCOLOR:$PRESET\W\\$ "
 case "$TERM" in
     xterm*|rxvt*)
         PS1="\[\e]0;\u@\h:\w\a\]$PS1"

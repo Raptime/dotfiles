@@ -28,6 +28,7 @@ shopt -s cmdhist
 shopt -s checkwinsize
 shopt -s histappend
 
+PROMPT_COMMAND=__prompt_command
 
 #prompt color
 __context_color_count() {
@@ -40,7 +41,6 @@ __context_color_hash() {
 
 __context_color_number() {
   expr 1 + $(__context_color_hash) % $(expr $(__context_color_count) - 1)
-#  expr 1 + $(__context_color_hash) % 8
 }
 
 __context_color_sequence() {
@@ -48,21 +48,44 @@ __context_color_sequence() {
   sequence="\[${sequence}\]"
   echo "$sequence"
 }
-PCOLOR="$(__context_color_sequence)"
-PRESET="\[$(tput sgr0)\]"
-#PRESET="\[\e[0m\]"
 
-#PS1='\[\e[0;34m\][\[\e[0m\]\u@\h \W\[\e[0;34m\]]\[\e[0m\]\$ '
-#PS1="$PCOLOR[$PRESET\u@\h \W$PCOLOR]$PRESET\\$ "
-#PS1="\u@\h:\W\\$ "
-PS1="\u$PCOLOR@$PRESET\h$PCOLOR:$PRESET\W\\$ "
-case "$TERM" in
+__prompt_command() {
+  local PERR="$?"
+  PS1=""
+
+  local PCOLOR="$(__context_color_sequence)"
+  local PRESET="\[$(tput sgr0)\]"
+
+  #prompt host
+  if [ -n "${SSH_CLIENT-}${SSH2_CLIENT-}${SSH_TTY-}" ]; then
+    local PHOST="@$PCOLOR\h$PRESET"
+  else
+    local PHOST=""
+  fi
+
+  #prompt error
+  if [ $PERR != 0 ]; then
+    PS1+="$PCOLOR[$PERR]$PRESET"
+  fi
+
+  #prompt perm
+  if [ -w "${PWD}" ]; then
+    local PPERM=":"
+  else
+    local PPERM="$PCOLOR:$PRESET"
+  fi
+
+#  PS1+="\u$PHOST$PPERM\W\\$ "
+  PS1+="\u$PHOST:\W\\$ "
+
+  case "$TERM" in
     xterm*|rxvt*)
-        PS1="\[\e]0;\u@\h:\w\a\]$PS1"
-        ;;
+      PS1="\[\e]0;\u@\h\a\]$PS1"
+      ;;
     *)
-        ;;
-esac
+      ;;
+  esac
+}
 
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion

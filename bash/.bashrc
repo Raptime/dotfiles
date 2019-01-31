@@ -30,10 +30,54 @@ shopt -s histappend
 
 PROMPT_COMMAND=__prompt_command
 
+
+_LP_RUNTIME_LAST_SECONDS=$SECONDS
+
+_lp_runtime()
+{
+    if (( _LP_RUNTIME_SECONDS >= 2 ))
+    then
+        # display runtime seconds as days, hours, minutes, and seconds
+        (( _LP_RUNTIME_SECONDS >= 86400 )) && echo -n $((_LP_RUNTIME_SECONDS / 86400))d
+        (( _LP_RUNTIME_SECONDS >= 3600 )) && echo -n $((_LP_RUNTIME_SECONDS % 86400 / 3600))h
+        (( _LP_RUNTIME_SECONDS >= 60 )) && echo -n $((_LP_RUNTIME_SECONDS % 3600 / 60))m
+        echo -n $((_LP_RUNTIME_SECONDS % 60))"s "
+    fi
+    :
+}
+
+_lp_runtime_before()
+{
+    # If the previous command was just the refresh of the prompt,
+    # reset the counter
+    if (( _LP_RUNTIME_SKIP )); then
+        _LP_RUNTIME_SECONDS=-1 _LP_RUNTIME_LAST_SECONDS=$SECONDS
+    else
+        # Compute number of seconds since program was started
+        (( _LP_RUNTIME_SECONDS=SECONDS-_LP_RUNTIME_LAST_SECONDS ))
+    fi
+
+    # If the command to run is the prompt, we'll have to ignore it
+    [[ "$BASH_COMMAND" != "$PROMPT_COMMAND" ]]
+    _LP_RUNTIME_SKIP=$?
+}
+
+_LP_RUNTIME_SKIP=0
+# _lp_runtime_before gets called just before bash executes a command,
+# including $PROMPT_COMMAND
+trap _lp_runtime_before DEBUG
+
+
+
+
+
 __prompt_command() {
   local PERR="$?"
   PS1=""
 
+  local PCOLOR_PAT="\[$(tput bold)\]" #Bold
+  local PCOLOR_ROO="\[$(tput bold tput setaf 3)\]" #Bold Yellow
+  local PCOLOR_RUN="\[$(tput setaf 3)\]" #Yellow
   local PCOLOR_SSH="\[$(tput setaf 6)\]" #Cyan
   local PCOLOR_ERR="\[$(tput setaf 5)\]" #Purple
   local PRESET="\[$(tput sgr0)\]"
@@ -45,20 +89,23 @@ __prompt_command() {
     local PHOST=""
   fi
 
+  #prompt path
+  if (( EUID !=0 )); then
+    local PPATH="$PCOLOR_PAT\W$PRESET"
+  else
+    local PPATH="$PCOLOR_ROO\W$PRESET"
+  fi
+
+  #prompt runtime
+  local PRUNTIME="$PCOLOR_RUN$(_lp_runtime)$PRESET"
+
+  #build prompt
+  PS1+="$PRUNTIME"
   #prompt error
   if [ $PERR != 0 ]; then
     PS1+="$PCOLOR_ERR[$PERR]$PRESET"
   fi
-
-  #prompt perm
-  if [ -w "${PWD}" ]; then
-    local PPERM=":"
-  else
-    local PPERM="$PCOLOR:$PRESET"
-  fi
-
-#  PS1+="\u$PHOST$PPERM\W\\$ "
-  PS1+="\u$PHOST:\W\\$ "
+  PS1+="\u$PHOST:$PPATH\\$ "
 
   case "$TERM" in
     xterm*|rxvt*)

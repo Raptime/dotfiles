@@ -30,42 +30,24 @@ shopt -s histappend
 
 PROMPT_COMMAND=__prompt_command
 
-#prompt color
-__context_color_count() {
-  printf "%d" $(infocmp -1 | sed -n -e "s/^\t*colors#\([0-9]x\?[0-9]*\),.*/\1/p")
-}
-
-__context_color_hash() {
-  eval "whoami; hostname" | sum | cut -d' ' -f1
-}
-
-__context_color_number() {
-  expr 1 + $(__context_color_hash) % $(expr $(__context_color_count) - 1)
-}
-
-__context_color_sequence() {
-  local sequence="$(tput setaf $(__context_color_number))"
-  sequence="\[${sequence}\]"
-  echo "$sequence"
-}
-
 __prompt_command() {
   local PERR="$?"
   PS1=""
 
-  local PCOLOR="$(__context_color_sequence)"
+  local PCOLOR_SSH="\[$(tput setaf 6)\]" #Cyan
+  local PCOLOR_ERR="\[$(tput setaf 5)\]" #Purple
   local PRESET="\[$(tput sgr0)\]"
 
   #prompt host
   if [ -n "${SSH_CLIENT-}${SSH2_CLIENT-}${SSH_TTY-}" ]; then
-    local PHOST="@$PCOLOR\h$PRESET"
+    local PHOST="@$PCOLOR_SSH\h$PRESET"
   else
     local PHOST=""
   fi
 
   #prompt error
   if [ $PERR != 0 ]; then
-    PS1+="$PCOLOR[$PERR]$PRESET"
+    PS1+="$PCOLOR_ERR[$PERR]$PRESET"
   fi
 
   #prompt perm

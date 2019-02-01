@@ -85,6 +85,9 @@ __prompt_command() {
   #prompt host
   if [ -n "${SSH_CLIENT-}${SSH2_CLIENT-}${SSH_TTY-}" ]; then
     local PHOST="@$PCOLOR_SSH\h$PRESET"
+  elif [[ "$TERM" == screen* ]]; then
+    local PMULT="tmux"
+    local PHOST="@$PCOLOR_SSH$PMULT$PRESET"
   else
     local PHOST=""
   fi

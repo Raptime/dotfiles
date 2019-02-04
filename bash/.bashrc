@@ -75,8 +75,8 @@ __prompt_command() {
   local PERR="$?"
   PS1=""
 
-  local PCOLOR_PAT="\[$(tput bold)\]" #Bold
-  local PCOLOR_ROO="\[$(tput bold) $(tput setaf 3)\]" #Bold Yellow
+  local PCOLOR_PAT="\[$(tput setaf 2)\]" #Green
+  local PCOLOR_ROO="\[$(tput setaf 3)\]" #Yellow
   local PCOLOR_RUN="\[$(tput setaf 3)\]" #Yellow
   local PCOLOR_SSH="\[$(tput setaf 6)\]" #Cyan
   local PCOLOR_ERR="\[$(tput setaf 5)\]" #Purple
@@ -98,22 +98,23 @@ __prompt_command() {
     local PPATH="$PCOLOR_ROO\W$PRESET"
   fi
 
+  #prompt path using gitprompt-rs
+  if [ -x "$(command -v gitprompt-rs)" ]; then
+    local PGIT="\[$(gitprompt-rs)\]"
+  else
+    local PGIT=""
+  fi
+
   #prompt runtime
   local PRUNTIME="$PCOLOR_RUN$(_lp_runtime)$PRESET"
 
-###build prompt
+  #build prompt
   PS1+="$PRUNTIME"
   #prompt error
   if [ $PERR != 0 ]; then
     PS1+="$PCOLOR_ERR[$PERR]$PRESET"
   fi
-  #prompt path using gitprompt-rs
-  local PGIT=$(gitprompt-rs)
-  if [ "$PGIT" == "" ]; then
-    PS1+="\u$PHOST:$PPATH\\$ "
-  else
-    PS1+="\u$PHOST:$PPATH $PGIT\\$ "
-  fi
+  PS1+="\u$PHOST:$PPATH$PGIT\\$ "
 
   case "$TERM" in
     xterm*|rxvt*)

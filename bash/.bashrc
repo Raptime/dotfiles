@@ -161,23 +161,11 @@ _pgit_branch_color()
                 ret="$PCOLOR_COMMITS${branch}$PRESET|$has_commit"
             fi
         else
-            ret="$PCOLOR_UP${branch}$PRESET" # nothing to commit or push
+            ret="${branch}" # nothing to commit or push
         fi
-        echo -nE "$ret"
+        echo -nE " ($ret)"
     fi
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 __prompt_command() {
   local PERR="$?"
@@ -206,13 +194,6 @@ __prompt_command() {
     local PPATH="$PCOLOR_ROO\W$PRESET"
   fi
 
-  #prompt path using gitprompt-rs
-  if [ -x "$(command -v gitprompt-rs)" ]; then
-    local PGIT="\[$(gitprompt-rs)\]"
-  else
-    local PGIT="($(_pgit_branch_color))"
-  fi
-
   #prompt runtime
   local PRUNTIME="$PCOLOR_RUN$(_pruntime)$PRESET"
 
@@ -222,7 +203,7 @@ __prompt_command() {
   if [ $PERR != 0 ]; then
     PS1+="$PCOLOR_ERR[$PERR]$PRESET"
   fi
-  PS1+="\u$PHOST:$PPATH$PGIT\\$ "
+  PS1+="\u$PHOST:$PPATH$(_pgit_branch_color)\\$ "
 
   case "$TERM" in
     xterm*|rxvt*)

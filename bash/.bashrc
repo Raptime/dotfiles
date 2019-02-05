@@ -31,41 +31,141 @@ shopt -s histappend
 PROMPT_COMMAND=__prompt_command
 
 
-_LP_RUNTIME_LAST_SECONDS=$SECONDS
+_PRUNTIME_LAST_SECONDS=$SECONDS
 
-_lp_runtime()
+_pruntime()
 {
-    if (( _LP_RUNTIME_SECONDS >= 2 ))
+    if (( _PRUNTIME_SECONDS >= 2 ))
     then
         # display runtime seconds as days, hours, minutes, and seconds
-        (( _LP_RUNTIME_SECONDS >= 86400 )) && echo -n $((_LP_RUNTIME_SECONDS / 86400))d
-        (( _LP_RUNTIME_SECONDS >= 3600 )) && echo -n $((_LP_RUNTIME_SECONDS % 86400 / 3600))h
-        (( _LP_RUNTIME_SECONDS >= 60 )) && echo -n $((_LP_RUNTIME_SECONDS % 3600 / 60))m
-        echo -n $((_LP_RUNTIME_SECONDS % 60))"s "
+        (( _PRUNTIME_SECONDS >= 86400 )) && echo -n $((_PRUNTIME_SECONDS / 86400))d
+        (( _PRUNTIME_SECONDS >= 3600 )) && echo -n $((_PRUNTIME_SECONDS % 86400 / 3600))h
+        (( _PRUNTIME_SECONDS >= 60 )) && echo -n $((_PRUNTIME_SECONDS % 3600 / 60))m
+        echo -n $((_PRUNTIME_SECONDS % 60))"s "
     fi
     :
 }
 
-_lp_runtime_before()
+_pruntime_before()
 {
     # If the previous command was just the refresh of the prompt,
     # reset the counter
-    if (( _LP_RUNTIME_SKIP )); then
-        _LP_RUNTIME_SECONDS=-1 _LP_RUNTIME_LAST_SECONDS=$SECONDS
+    if (( _PRUNTIME_SKIP )); then
+        _PRUNTIME_SECONDS=-1 _PRUNTIME_LAST_SECONDS=$SECONDS
     else
         # Compute number of seconds since program was started
-        (( _LP_RUNTIME_SECONDS=SECONDS-_LP_RUNTIME_LAST_SECONDS ))
+        (( _PRUNTIME_SECONDS=SECONDS-_PRUNTIME_LAST_SECONDS ))
     fi
 
     # If the command to run is the prompt, we'll have to ignore it
     [[ "$BASH_COMMAND" != "$PROMPT_COMMAND" ]]
-    _LP_RUNTIME_SKIP=$?
+    _PRUNTIME_SKIP=$?
 }
 
-_LP_RUNTIME_SKIP=0
-# _lp_runtime_before gets called just before bash executes a command,
+_PRUNTIME_SKIP=0
+# _pruntime_before gets called just before bash executes a command,
 # including $PROMPT_COMMAND
-trap _lp_runtime_before DEBUG
+trap _pruntime_before DEBUG
+
+# GIT #
+# Get the branch name of the current directory
+_pgit_branch()
+{
+    \git rev-parse --is-inside-work-tree >/dev/null 2>&1 || return
+
+    local branch
+    if branch="$(\git symbolic-ref --short -q HEAD)"; then
+        echo $branch
+    else
+        # In detached head state, use commit instead
+        # No escape needed
+        \git rev-parse --short -q HEAD
+    fi
+}
+
+_pgit_branch_color()
+{
+    local branch
+    branch="$(_pgit_branch)"
+    if [[ -n "$branch" ]]; then
+
+        local remote
+        remote="$(\git config --get branch.${branch}.remote 2>/dev/null)"
+
+        local has_commit=""
+        local commit_ahead
+        local commit_behind
+        if [[ -n "$remote" ]]; then
+            local remote_branch
+            remote_branch="$(\git config --get branch.${branch}.merge)"
+            if [[ -n "$remote_branch" ]]; then
+                remote_branch=${remote_branch/refs\/heads/refs\/remotes\/$remote}
+                commit_ahead="$(\git rev-list --count $remote_branch..HEAD 2>/dev/null)"
+                commit_behind="$(\git rev-list --count HEAD..$remote_branch 2>/dev/null)"
+                if [[ "$commit_ahead" -ne "0" && "$commit_behind" -ne "0" ]]; then
+                    has_commit="+$commit_ahead/-$commit_behind"
+                elif [[ "$commit_ahead" -ne "0" ]]; then
+                    has_commit="$commit_ahead"
+                elif [[ "$commit_behind" -ne "0" ]]; then
+                    has_commit="-$commit_behind"
+                fi
+            fi
+        fi
+
+        local ret
+        local shortstat # only to check for uncommitted changes
+        shortstat="$(LC_ALL=C \git diff --shortstat HEAD 2>/dev/null)"
+
+        if [[ -n "$shortstat" ]]; then
+            local u_stat # shorstat of *unstaged* changes
+            u_stat="$(LC_ALL=C \git diff --shortstat 2>/dev/null)"
+            u_stat=${u_stat/*changed, /} # removing "n file(s) changed"
+
+            local i_lines # inserted lines
+            if [[ "$u_stat" = *insertion* ]]; then
+                i_lines=${u_stat/ inser*}
+            else
+                i_lines=0
+            fi
+
+            local d_lines # deleted lines
+            if [[ "$u_stat" = *deletion* ]]; then
+                d_lines=${u_stat/*\(+\), }
+                d_lines=${d_lines/ del*/}
+            else
+                d_lines=0
+            fi
+
+            local has_lines
+            has_lines="+$i_lines/-$d_lines"
+
+            if [[ -n "$has_commit" ]]; then
+                # Changes to commit and commits to push
+                ret="${branch}|$has_lines,$has_commit"
+            else
+                ret="${branch}|$has_lines" # changes to commit
+            fi
+        elif [[ -n "$has_commit" ]]; then
+            # some commit(s) to push
+            if [[ "$commit_behind" -gt "0" ]]; then
+                ret="${branch}|$has_commit"
+            else
+                ret="${branch}|$has_commit"
+            fi
+        else
+            ret="${branch}" # nothing to commit or push
+        fi
+        echo -nE "$ret"
+    fi
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -102,11 +202,11 @@ __prompt_command() {
   if [ -x "$(command -v gitprompt-rs)" ]; then
     local PGIT="\[$(gitprompt-rs)\]"
   else
-    local PGIT=""
+    local PGIT="($(_pgit_branch_color))"
   fi
 
   #prompt runtime
-  local PRUNTIME="$PCOLOR_RUN$(_lp_runtime)$PRESET"
+  local PRUNTIME="$PCOLOR_RUN$(_pruntime)$PRESET"
 
   #build prompt
   PS1+="$PRUNTIME"

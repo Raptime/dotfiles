@@ -85,6 +85,14 @@ _pgit_branch()
 
 _pgit_branch_color()
 {
+
+  local PCOLOR_UP="\[$(tput setaf 2)\]" #Green
+  local PCOLOR_COMMITS="\[$(tput setaf 3)\]" #Yellow
+  local PCOLOR_COMMITS_BEHIND="\[$(tput bold)$(tput setaf 1)\]" #Red
+  local PCOLOR_CHANGES="\[$(tput setaf 1)\]" #Red
+  local PCOLOR_DIFF="\[$(tput setaf 5)\]" #Purple
+  local PRESET="\[$(tput sgr0)\]"
+
     local branch
     branch="$(_pgit_branch)"
     if [[ -n "$branch" ]]; then
@@ -141,19 +149,19 @@ _pgit_branch_color()
 
             if [[ -n "$has_commit" ]]; then
                 # Changes to commit and commits to push
-                ret="${branch}|$has_lines,$has_commit"
+                ret="$PCOLOR_CHANGES${branch}$PRESET|$PCOLOR_DIFF$has_lines$PRESET,$has_commit"
             else
-                ret="${branch}|$has_lines" # changes to commit
+                ret="$PCOLOR_CHANGES${branch}$PRESET|$PCOLOR_DIFF$has_lines$PRESET" # changes to commit
             fi
         elif [[ -n "$has_commit" ]]; then
             # some commit(s) to push
             if [[ "$commit_behind" -gt "0" ]]; then
-                ret="${branch}|$has_commit"
+                ret="$PCOLOR_COMMITS_BEHIND${branch}$PRESET|$has_commit"
             else
-                ret="${branch}|$has_commit"
+                ret="$PCOLOR_COMMITS${branch}$PRESET|$has_commit"
             fi
         else
-            ret="${branch}" # nothing to commit or push
+            ret="$PCOLOR_UP${branch}$PRESET" # nothing to commit or push
         fi
         echo -nE "$ret"
     fi

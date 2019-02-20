@@ -25,7 +25,7 @@ setenv  EDITOR vi
 
 if ($?prompt) then
         # An interactive shell -- set some stuff up
-        set prompt="%{\e[0;34m%}[%{\e[0m%}%N@%m %~%{\e[0;34m%}]%{\e[0m%}%# "
+        set prompt="%N@%m:%~%# "
         set promptchars = "%#"
         set filec
         set autolist = ambiguous

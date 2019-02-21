@@ -5,27 +5,27 @@
 
 (require 'package)
 
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
+;;(add-to-list 'package-archives
+;;             '("melpa" . "http://melpa.org/packages/") t)
 
-(package-initialize)
-(when (not package-archive-contents)
-  (package-refresh-contents))
+;;(package-initialize)
+;;(when (not package-archive-contents)
+;;  (package-refresh-contents))
 
-(defvar myPackages
-  '(better-defaults     ;; better defaults
-    solarized-theme))   ;; save my eyes theme
+;;(defvar myPackages
+;;  '(better-defaults     ;; better defaults
+;;    solarized-theme))   ;; save my eyes theme
 
-(mapc #'(lambda (package)
-          (unless (package-installed-p package)
-            (package-install package)))
-      myPackages)
+;;(mapc #'(lambda (package)
+;;          (unless (package-installed-p package)
+;;            (package-install package)))
+;;      myPackages)
 
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
 
 (setq inhibit-startup-message t) ;; hide the startup message
-(load-theme 'solarized-dark t)   ;; load solarized theme
+;;(load-theme 'solarized-dark t)   ;; load solarized theme
 (custom-set-faces (if (not window-system) '(default ((t (:background "nil"))))))
 (global-linum-mode t)            ;; enable line numbers globally
 (column-number-mode t)           ;; Show column number as well as line
@@ -38,7 +38,7 @@
 (menu-bar-mode -1)		;; disable the menu bar
 (if (functionp 'tool-bar-mode) (tool-bar-mode -1))		;; disable the tool bar
 
-(set-face-attribute 'default nil :font "DejaVu Sans Mono-9") ;; set default font
+(set-face-attribute 'default nil :font "Liberation Mono-10") ;; set default font
 
 (setq backup-directory-alist `(("." . "~/.saves"))) ;; move backups out of the current folder
 

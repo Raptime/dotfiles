@@ -27,16 +27,14 @@
 [user]
 	name = Raptime
 	email = raptime@users.noreply.github.com
-
 [core]
-	editor = vi
+	editor = vim
 	filemode = false
-
 [push]
 	default = simple
-
 [merge]
 	tool = vimdiff
-
 [color]
 	ui = auto
+[credential]
+	helper = cache

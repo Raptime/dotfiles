@@ -1,5 +1,17 @@
 ;; init.el --- Emacs configuration
 
+;; PACKAGES
+;; --------------------------------------
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+;; Rust
+(require 'rust-mode)
+(add-hook 'rust-mode-hook
+          (lambda () (setq indent-tabs-mode nil)))
+
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
 (setq inhibit-startup-message t)     ;; hide the startup message
@@ -31,8 +43,7 @@
   "indent whole buffer"
   (interactive)
   (delete-trailing-whitespace)
-  (indent-region (point-min) (point-max) nil)
-  (untabify (point-min) (point-max)))
+  (indent-region (point-min) (point-max) nil))
 
 ;; KEY BINDINGS
 ;; --------------------------------------

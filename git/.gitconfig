@@ -1,7 +1,7 @@
 [user]
 	name = Raptime
 	email = raptime@users.noreply.github.com
-[push]
+[pull]
 	rebase = false
 [color]
 	ui = auto

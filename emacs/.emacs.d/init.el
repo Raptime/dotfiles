@@ -47,6 +47,11 @@
 
 ;; KEY BINDINGS
 ;; --------------------------------------
+
+(global-set-key [f2]            'save-buffer)
+(global-set-key [f3]            'find-file)
+(global-set-key [f4]            'kill-this-buffer)
+;;(global-set-key [f5]            'open-new-frame)
 (global-set-key [f6]            'next-multiframe-window)
 (global-set-key [f7]            'next-buffer)
 (global-set-key [f12]           'iwb)

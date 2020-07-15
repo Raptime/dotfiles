@@ -11,6 +11,11 @@
 (require 'rust-mode)
 (add-hook 'rust-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
+(setq rust-format-on-save t)
+(define-key rust-mode-map (kbd "C-c C-c") 'rust-test)
+
+;; Theme
+(load-theme 'base16-default-dark t)
 
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
@@ -48,9 +53,9 @@
 ;; KEY BINDINGS
 ;; --------------------------------------
 
-(global-set-key [f2]            'save-buffer)
-(global-set-key [f3]            'find-file)
-(global-set-key [f4]            'kill-this-buffer)
+;;(global-set-key [f2]            'save-buffer)
+;;(global-set-key [f3]            'find-file)
+;;(global-set-key [f4]            'kill-this-buffer)
 ;;(global-set-key [f5]            'open-new-frame)
 (global-set-key [f6]            'next-multiframe-window)
 (global-set-key [f7]            'next-buffer)

@@ -22,7 +22,9 @@
 (setq inhibit-startup-message t)     ;; hide the startup message
 (setq default-major-mode 'text-mode) ;; text mode for new buffers
 (setq visible-bell t)                ;; disable the bell
-(setq linum-format "%d ")            ;; add a space after line numbers
+(setq mouse-wheel-scroll-amount
+      '(1 ((shift) . 1) ((control) . nil)))
+(setq mouse-wheel-progressive-speed nil)
 
 (defalias 'yes-or-no-p 'y-or-n-p)    ;; replace yes or no with y or n
 
@@ -60,3 +62,5 @@
 (global-set-key [f6]            'next-multiframe-window)
 (global-set-key [f7]            'next-buffer)
 (global-set-key [f12]           'iwb)
+
+;; init.el --- End of config

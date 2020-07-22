@@ -55,12 +55,10 @@
 ;; KEY BINDINGS
 ;; --------------------------------------
 
-;;(global-set-key [f2]            'save-buffer)
-;;(global-set-key [f3]            'find-file)
-;;(global-set-key [f4]            'kill-this-buffer)
-;;(global-set-key [f5]            'open-new-frame)
-(global-set-key [f6]            'next-multiframe-window)
-(global-set-key [f7]            'next-buffer)
-(global-set-key [f12]           'iwb)
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
+
 
 ;; init.el --- End of config

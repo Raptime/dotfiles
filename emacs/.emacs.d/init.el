@@ -60,5 +60,7 @@
 (global-set-key (kbd "C-c <up>")    'windmove-up)
 (global-set-key (kbd "C-c <down>")  'windmove-down)
 
+(global-set-key (kbd "C-x g")  'magit-status)
+
 
 ;; init.el --- End of config

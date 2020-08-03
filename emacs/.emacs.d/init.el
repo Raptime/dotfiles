@@ -12,10 +12,11 @@
 (add-hook 'rust-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
 (setq rust-format-on-save t)
+(setq lsp-rust-server 'rust-analyzer)
 (define-key rust-mode-map (kbd "C-c C-c") 'rust-test)
 
 ;; Theme
-(load-theme 'base16-default-dark t)
+(load-theme 'nord t)
 
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------

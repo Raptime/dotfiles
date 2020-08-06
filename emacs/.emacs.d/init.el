@@ -13,7 +13,8 @@
           (lambda () (setq indent-tabs-mode nil)))
 (setq rust-format-on-save t)
 (setq lsp-rust-server 'rust-analyzer)
-(define-key rust-mode-map (kbd "C-c C-c") 'rust-test)
+(define-key rust-mode-map (kbd "C-c C-c") 'rust-compile)
+(define-key rust-mode-map (kbd "C-c C-t") 'rust-test)
 
 ;; Theme
 (load-theme 'nord t)

@@ -7,6 +7,18 @@
              '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+;; Package list
+(setq package-selected-packages
+      '(nord-theme
+	magit
+	lsp-mode
+	rust-mode))
+
+;; Install packages
+(unless package-archive-contents
+  (package-refresh-contents))
+(package-install-selected-packages)
+
 ;; Rust
 (require 'rust-mode)
 (add-hook 'rust-mode-hook
@@ -15,6 +27,9 @@
 (setq lsp-rust-server 'rust-analyzer)
 (define-key rust-mode-map (kbd "C-c C-c") 'rust-compile)
 (define-key rust-mode-map (kbd "C-c C-t") 'rust-test)
+
+;; Magit
+(global-set-key (kbd "C-x g")  'magit-status)
 
 ;; Theme
 (load-theme 'nord t)
@@ -61,8 +76,5 @@
 (global-set-key (kbd "C-c <right>") 'windmove-right)
 (global-set-key (kbd "C-c <up>")    'windmove-up)
 (global-set-key (kbd "C-c <down>")  'windmove-down)
-
-(global-set-key (kbd "C-x g")  'magit-status)
-
 
 ;; init.el --- End of config

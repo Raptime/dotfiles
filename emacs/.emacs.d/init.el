@@ -12,7 +12,8 @@
       '(nord-theme
 	magit
 	lsp-mode
-	rust-mode))
+	rust-mode
+	company))
 
 ;; Install packages
 (unless package-archive-contents
@@ -60,6 +61,12 @@
 (unless backup-directory-alist
   (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                  "backups")))))
+
+;; Emoji: 😄, 🤦, 🏴󠁧󠁢󠁳󠁣󠁴󠁿
+(set-fontset-font t 'symbol "Noto Color Emoji")
+(set-fontset-font t 'symbol "Apple Color Emoji" nil 'append)
+(set-fontset-font t 'symbol "Segoe UI Emoji" nil 'append)
+(set-fontset-font t 'symbol "Symbola" nil 'append)
 
 ;; FUNCTIONS
 ;; --------------------------------------

@@ -10,7 +10,6 @@
 ;; Package list
 (setq package-selected-packages
       '(nord-theme
-	magit
 	lsp-mode
 	rust-mode
 	company))
@@ -28,9 +27,6 @@
 (setq lsp-rust-server 'rust-analyzer)
 (define-key rust-mode-map (kbd "C-c C-c") 'rust-compile)
 (define-key rust-mode-map (kbd "C-c C-t") 'rust-test)
-
-;; Magit
-(global-set-key (kbd "C-x g")  'magit-status)
 
 ;; Theme
 (load-theme 'nord t)

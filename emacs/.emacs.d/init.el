@@ -8,28 +8,53 @@
 (package-initialize)
 
 ;; Package list
-(setq package-selected-packages
-      '(nord-theme
-	lsp-mode
-	rust-mode
-	company))
+(setq package-selected-packages '(
+				  nord-theme
+				  lsp-mode
+				  rust-mode
+				  company
+				  flycheck
+				  which-key
+				  ;; expand-region
+				  smartparens
+				  ;; yasnippet
+				  ;; yasnippet-snippets
+				  ))
 
 ;; Install packages
 (unless package-archive-contents
   (package-refresh-contents))
 (package-install-selected-packages)
 
-;; Rust
+;; Theme
+(load-theme 'nord t)
+
+;; rust-mode
 (require 'rust-mode)
 (add-hook 'rust-mode-hook
-          (lambda () (setq indent-tabs-mode nil)))
+	  (lambda () (setq indent-tabs-mode nil)))
 (setq rust-format-on-save t)
-(setq lsp-rust-server 'rust-analyzer)
 (define-key rust-mode-map (kbd "C-c C-c") 'rust-compile)
 (define-key rust-mode-map (kbd "C-c C-t") 'rust-test)
 
-;; Theme
-(load-theme 'nord t)
+;; lsp-mode
+(require 'lsp-mode)
+(add-hook 'rust-mode-hook #'lsp)
+(setq lsp-rust-server 'rust-analyzer)
+
+;; which-key
+(which-key-mode)
+
+;; expand-region
+;; (global-set-key (kbd "C-=") 'er/expand-region)
+
+;; smartparens
+(require 'smartparens-config)
+(add-hook 'rust-mode-hook #'smartparens-mode)
+
+;; yasnippet
+;; (yas-reload-all)
+;; (add-hook 'rust-mode-hook #'yas-minor-mode)
 
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
@@ -41,10 +66,12 @@
 (setq mouse-wheel-progressive-speed nil)
 
 (defalias 'yes-or-no-p 'y-or-n-p)    ;; replace yes or no with y or n
+(setq confirm-kill-processes nil)
 
 (save-place-mode 1)
 (show-paren-mode 1)
 
+;; Bars
 (unless (eq window-system 'ns)
   (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode)
@@ -54,6 +81,7 @@
 (when (fboundp 'horizontal-scroll-bar-mode)
   (horizontal-scroll-bar-mode -1))
 
+;; Backups
 (unless backup-directory-alist
   (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                  "backups")))))
@@ -75,9 +103,9 @@
 ;; KEY BINDINGS
 ;; --------------------------------------
 
-(global-set-key (kbd "C-c <left>")  'windmove-left)
-(global-set-key (kbd "C-c <right>") 'windmove-right)
-(global-set-key (kbd "C-c <up>")    'windmove-up)
-(global-set-key (kbd "C-c <down>")  'windmove-down)
+;; (global-set-key (kbd "C-c <left>")  'windmove-left)
+;; (global-set-key (kbd "C-c <right>") 'windmove-right)
+;; (global-set-key (kbd "C-c <up>")    'windmove-up)
+;; (global-set-key (kbd "C-c <down>")  'windmove-down)
 
 ;; init.el --- End of config

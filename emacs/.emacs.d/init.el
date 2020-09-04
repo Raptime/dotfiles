@@ -16,7 +16,7 @@
 				  flycheck
 				  which-key
 				  ;; expand-region
-				  smartparens
+				  ;; smartparens
 				  ;; yasnippet
 				  ;; yasnippet-snippets
 				  ))
@@ -45,12 +45,15 @@
 ;; which-key
 (which-key-mode)
 
+;; company
+(setq company-idle-delay 0)
+
 ;; expand-region
 ;; (global-set-key (kbd "C-=") 'er/expand-region)
 
 ;; smartparens
-(require 'smartparens-config)
-(add-hook 'rust-mode-hook #'smartparens-mode)
+;; (require 'smartparens-config)
+;; (add-hook 'rust-mode-hook #'smartparens-mode)
 
 ;; yasnippet
 ;; (yas-reload-all)

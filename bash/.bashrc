@@ -18,6 +18,7 @@ alias ll='l --almost-all'
 alias lh='l --human-readable'
 alias h='history 25'
 alias j='jobs -l'
+alias ip='ip -color'
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'

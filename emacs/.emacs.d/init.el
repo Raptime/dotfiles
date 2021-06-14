@@ -36,6 +36,7 @@
 (setq rust-format-on-save t)
 (define-key rust-mode-map (kbd "C-c C-c") 'rust-compile)
 (define-key rust-mode-map (kbd "C-c C-t") 'rust-test)
+(define-key rust-mode-map (kbd "C-c C-r") 'rust-run)
 
 ;; lsp-mode
 (require 'lsp-mode)

@@ -6,12 +6,15 @@ export HISTFILESIZE=10000
 export HISSIZE=10000
 export HISTTIMEFORMAT='%F %T '
 
+export EDITOR='vi'
+export VISUAL='vi'
+
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ls='ls --color=auto --classify'
+alias ls='ls -v --color=auto --classify'
 alias l='ls -l'
 alias la='l --all'
 alias ll='l --almost-all'

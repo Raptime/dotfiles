@@ -32,6 +32,8 @@ shopt -s cmdhist
 shopt -s checkwinsize
 shopt -s histappend
 
+test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
+
 PROMPT_COMMAND=__prompt_command
 
 

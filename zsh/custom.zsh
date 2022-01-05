@@ -3,7 +3,7 @@ export EDITOR='vi'
 export VISUAL=${EDITOR}
 
 # man color
-export MANPAGER="less -R --use-color -Dd+r -Du+b"
+export MANPAGER="less -R --use-color -Dd+g -Du+b"
 
 # import dircolors
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)

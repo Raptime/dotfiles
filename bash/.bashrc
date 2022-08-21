@@ -9,7 +9,7 @@ export HISTTIMEFORMAT='%F %T '
 export EDITOR='vi'
 export VISUAL='vi'
 
-export MANPAGER="less -R --use-color -Dd+r -Du+b"
+#export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'

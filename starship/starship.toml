@@ -1,0 +1,74 @@
+format = """
+$status\
+$cmd_duration\
+$jobs\
+$directory\
+$git_branch\
+$git_status\
+$character\
+"""
+
+right_format = """
+$time\
+"""
+
+add_newline = false
+continuation_prompt = '▶▶ '
+#palette = "nord"
+
+[jobs]
+style = 'green'
+
+[cmd_duration]
+style = 'yellow'
+format = '[$duration]($style) '
+
+[status]
+disabled = false
+style = 'red'
+format = '[\[$status\]]($style)'
+
+[username]
+style_user = 'brown'
+style_root = 'brown'
+format = '[$user]($style)@'
+
+[hostname]
+style = 'brown'
+format = '[$hostname]($style):'
+
+[directory]
+style = 'blue'
+
+[git_branch]
+style = 'green'
+format = '[$branch(:$remote_branch)]($style) '
+
+[git_status]
+style = 'yellow'
+format = '([$all_status$ahead_behind]($style) )'
+untracked = '?$count'
+modified = '!$count'
+
+[character]
+success_symbol = '[❯](green)'
+error_symbol = '[❯](red)'
+
+[time]
+disabled = false
+style = 'yellow'
+format = '[$time]($style)'
+
+[palettes.nord]
+dark_blue = '#5E81AC'
+blue = '#81A1C1'
+teal = '#88C0D0'
+red = '#BF616A'
+orange = '#D08770'
+green = '#A3BE8C'
+yellow = '#EBCB8B'
+purple = '#B48EAD'
+gray = '#434C5E'
+black = '#2E3440'
+white='#D8DEE9'
+

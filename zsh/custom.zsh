@@ -8,6 +8,8 @@ export XDG_CACHE_HOME=$HOME'/.cache'
 export GTK2_RC_FILES=$XDG_CONFIG_HOME'/gtk-2.0/gtkrc'
 export LESSHISTFILE=$XDG_STATE_HOME'/less/history'
 export HISTFILE=$XDG_STATE_HOME'/zsh/history'
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+
 
 # make sure we use vi to edit stuff
 export EDITOR='vi'

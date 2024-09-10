@@ -1,16 +1,9 @@
 [user]
 	name = Raptime
 	email = raptime@users.noreply.github.com
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAJqmRsbMLiqcGL3RvJyyPxSP/R4KkR47RQtzG5h9vgH
 [pull]
 	rebase = false
 [color]
 	ui = auto
 [credential]
 	helper = store
-[gpg]
-	format = ssh
-[gpg "ssh"]
-	program = /opt/1Password/op-ssh-sign
-[commit]
-	gpgsign = true

@@ -11,8 +11,6 @@ export VISUAL='vi'
 
 #export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
-export HISTFILE="${XDG_STATE_HOME}"/bash/history
-
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'

@@ -47,8 +47,8 @@ format = '[$branch(:$remote_branch)]($style) '
 [git_status]
 style = 'yellow'
 format = '([$all_status$ahead_behind]($style) )'
-untracked = '?$count'
-modified = '!$count'
+#untracked = '?$count'
+#modified = '!$count'
 
 [character]
 success_symbol = '[❯](green)'

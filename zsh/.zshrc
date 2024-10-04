@@ -1,3 +1,16 @@
+# history file
+HISTFILE=~/.config/zsh/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+
+# use normal keybinds
+bindkey -e
+
+# completion
+zstyle ':completion:*' menu select
+autoload -Uz compinit
+compinit
+
 # make sure we use vi to edit stuff
 export EDITOR='vi'
 export VISUAL=${EDITOR}
@@ -22,3 +35,12 @@ alias lh='l --human-readable'
 alias h='history 25'
 alias j='jobs -l'
 alias ip='ip -color'
+
+# set window title
+function set_win_title(){
+    echo -ne "\033]0; $USER@$HOSTNAME \007"
+}
+starship_precmd_user_func="set_win_title"
+
+#start starship
+eval "$(starship init zsh)"

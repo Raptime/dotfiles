@@ -2,8 +2,7 @@ format = """
 $status\
 $cmd_duration\
 $jobs\
-$username\
-$hostname\
+($username$hostname:)\
 $directory\
 $git_branch\
 $git_status\
@@ -33,11 +32,11 @@ format = '[\[$status\]]($style)'
 [username]
 style_user = 'white'
 style_root = 'purple'
-format = '[$user@]($style)'
+format = '[$user]($style)'
 
 [hostname]
 style = 'cyan'
-format = '[$hostname]($style):'
+format = '@[$hostname]($style)'
 
 [directory]
 style = 'blue'

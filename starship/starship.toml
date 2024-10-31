@@ -15,7 +15,7 @@ $time\
 
 add_newline = false
 continuation_prompt = '▶▶ '
-#palette = "nord"
+palette = "nord"
 
 [jobs]
 style = 'green'

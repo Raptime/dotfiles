@@ -1,3 +1,6 @@
+# path
+export PATH=$HOME/.local/bin:$PATH
+
 # options
 setopt always_to_end
 setopt automenu

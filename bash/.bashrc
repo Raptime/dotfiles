@@ -1,6 +1,11 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 export HISTCONTROL=ignoreboth #ignoredups + ignorespace
 export HISTFILESIZE=10000
 export HISSIZE=10000

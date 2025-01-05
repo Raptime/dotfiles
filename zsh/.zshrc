@@ -79,7 +79,7 @@ alias ip='ip -color'
 
 # set window title
 function set_win_title(){
-    echo -ne "\033]0; $USER@$HOSTNAME \007"
+    echo -ne "\033]0; $USER@$HOST \007"
 }
 precmd_functions+=(set_win_title)
 

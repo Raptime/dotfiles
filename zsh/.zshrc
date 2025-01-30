@@ -45,6 +45,8 @@ bindkey	'\eOB'	down-line-or-beginning-search # Down
 bindkey	"^[[H"	beginning-of-line
 bindkey	"^[[F"	end-of-line
 bindkey	"^[[3~"	delete-char
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 # magic
 autoload -Uz bracketed-paste-magic

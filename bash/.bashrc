@@ -54,4 +54,7 @@ function set_win_title(){
 }
 starship_precmd_user_func="set_win_title"
 
-eval "$(starship init bash)"
+if command -v starship &> /dev/null; then
+  eval "$(starship completions bash)"
+  eval "$(starship init bash)"
+fi

@@ -8,13 +8,11 @@ fi
 
 export HISTCONTROL=ignoreboth #ignoredups + ignorespace
 export HISTFILESIZE=10000
-export HISSIZE=10000
+export HISTSIZE=10000
 export HISTTIMEFORMAT='%F %T '
 
 export EDITOR='vi'
 export VISUAL='vi'
-
-#export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'

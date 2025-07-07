@@ -14,7 +14,6 @@ $time\
 """
 
 add_newline = false
-continuation_prompt = '▶▶ '
 palette = "nord"
 
 [jobs]

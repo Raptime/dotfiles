@@ -30,6 +30,8 @@
 ;; Theme
 ;; (load-theme 'nord t)
 (load-theme 'catppuccin :no-confirm)
+(setq catppuccin-flavor 'mocha) ;; or 'latte, 'macchiato, or 'mocha
+(catppuccin-reload)
 
 ;; rust-mode
 (require 'rust-mode)

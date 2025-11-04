@@ -9,6 +9,7 @@
 
 ;; Package list
 (setq package-selected-packages '(
+				  catppuccin-theme
 				  nord-theme
 				  lsp-mode
 				  rust-mode
@@ -27,7 +28,8 @@
 (package-install-selected-packages)
 
 ;; Theme
-(load-theme 'nord t)
+;; (load-theme 'nord t)
+(load-theme 'catppuccin :no-confirm)
 
 ;; rust-mode
 (require 'rust-mode)

@@ -1,65 +1,31 @@
-format = """
-$status\
-$cmd_duration\
-$jobs\
-($username$hostname:)\
-$directory\
-$git_branch\
-$git_status\
-$character\
-"""
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
 
-right_format = """
-$time\
-"""
-
+# Inserts a blank line between shell prompts
 add_newline = false
-#palette = "nord"
+
 palette = "catppuccin_mocha"
 
-[jobs]
-style = 'green'
+# Modules
+[line_break]
+#disabled = true
 
 [cmd_duration]
-style = 'yellow'
 format = '[$duration]($style) '
 
-[status]
-disabled = false
-style = 'red'
-format = '[\[$status\]]($style)'
-
 [username]
-style_user = 'white'
-style_root = 'purple'
 format = '[$user]($style)'
 
 [hostname]
-style = 'cyan'
-format = '@[$hostname]($style)'
-
-[directory]
-style = 'blue'
+format = '@[$hostname]($style):'
 
 [git_branch]
-style = 'green'
-format = '[$branch(:$remote_branch)]($style) '
+format = '[$symbol$branch(:$remote_branch)]($style) '
 
-[git_status]
-style = 'yellow'
-format = '([$all_status$ahead_behind]($style) )'
-#untracked = '?$count'
-#modified = '!$count'
 
-[character]
-success_symbol = '[❯](green)'
-error_symbol = '[❯](red)'
 
-[time]
-disabled = false
-style = 'yellow'
-format = '[$time]($style)'
 
+# Themes
 [palettes.nord]
 dark_blue = '#5E81AC'
 blue = '#81A1C1'

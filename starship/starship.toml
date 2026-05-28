@@ -4,41 +4,49 @@
 # Inserts a blank line between shell prompts
 add_newline = false
 
+# Theme
 palette = "catppuccin_mocha"
 
+# Prompt
+format = """
+($username$hostname:)\
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$character\
+"""
+
 # Modules
-[line_break]
-#disabled = true
-
-[cmd_duration]
-format = '[$duration]($style) '
-
 [username]
+style_user = 'text'
+style_root = 'mauve'
 format = '[$user]($style)'
 
 [hostname]
-format = '@[$hostname]($style):'
+style = 'teal'
+format = '@[$hostname]($style)'
+
+[directory]
+style = 'blue'
 
 [git_branch]
-format = '[$symbol$branch(:$remote_branch)]($style) '
+style = 'green'
+format = '[$branch(:$remote_branch)]($style) '
 
+[git_status]
+style = 'yellow'
+format = '([$all_status$ahead_behind]($style) )'
 
+[cmd_duration]
+style = 'yellow'
+format = '[$duration]($style) '
 
+[character]
+success_symbol = '[❯](green)'
+error_symbol = '[❯](red)'
 
 # Themes
-[palettes.nord]
-dark_blue = '#5E81AC'
-blue = '#81A1C1'
-teal = '#88C0D0'
-red = '#BF616A'
-orange = '#D08770'
-green = '#A3BE8C'
-yellow = '#EBCB8B'
-purple = '#B48EAD'
-gray = '#434C5E'
-black = '#2E3440'
-white='#D8DEE9'
-
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
 flamingo = "#f2cdcd"

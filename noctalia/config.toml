@@ -1,0 +1,84 @@
+[bar.default]
+background_opacity = 0.0
+capsule = true
+center = [ "bar", "clock", "weather" ]
+end = [ "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "battery", "session" ]
+margin_ends = 0
+start = [ "workspaces", "active_window" ]
+
+[control_center.calendar]
+show_events_card = false
+
+[idle]
+behavior_order = [ "dim", "lock", "screen-off", "lock-and-suspend" ]
+
+[idle.behavior.lock]
+action = "lock"
+enabled = true
+timeout = 300.0
+
+[idle.behavior.lock-and-suspend]
+action = "lock_and_suspend"
+enabled = true
+timeout = 900.0
+
+[idle.behavior.screen-off]
+action = "screen_off"
+enabled = true
+timeout = 600.0
+
+[idle.behavior.dim]
+action = "command"
+command = "noctalia msg brightness-set 10"
+resume_command = "noctalia msg brightness-set 50"
+enabled = false
+timeout = 30.0
+
+[location]
+auto_locate = true
+
+[lockscreen]
+fingerprint = false
+
+[plugin_settings."nzlov/daily-wallpaper"]
+locale = "jp-JP"
+
+[plugins]
+enabled = [ "nzlov/daily-wallpaper", "noctalia/world_clock" ]
+
+[shell.greeter_sync]
+auto_sync = true
+
+[shell.panel]
+control_center_placement = "floating"
+wallpaper_placement = "floating"
+session_placement = "floating"
+
+[theme]
+mode = "auto"
+source = "wallpaper"
+wallpaper_scheme = "m3-fruit-salad"
+
+[theme.templates]
+builtin_ids = [ "gtk3", "gtk4", "kcolorscheme", "niri", "qt", "umbriel" ]
+
+[widget.bar]
+type = "noctalia/world_clock:bar"
+
+[widget.battery]
+hide_when_full = true
+
+[widget.clock]
+format = "{:%a %d} | {:%H:%M}"
+
+[widget.media]
+enabled = false
+
+[widget.network]
+show_label = false
+
+[widget.volume]
+show_label = false
+
+[widget.weather]
+show_condition = false

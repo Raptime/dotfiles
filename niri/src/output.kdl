@@ -1,0 +1,23 @@
+// Laptop monitor
+output "eDP-1" {
+    mode "1920x1200"
+    variable-refresh-rate on-demand=true
+    scale 1.0
+    transform "normal"
+    position x=0 y=0
+}
+
+// Maison
+output "LG Electronics LG ULTRAWIDE 0x0002B0EB" {
+    mode "2560x1080"
+    scale 1.0
+    transform "normal"
+    position x=-2560 y=0
+}
+
+output "Dell Inc. DELL U2212HM PF48H29J055L" {
+    mode "1920x1080"
+    scale 1.0
+    transform "normal"
+    position x=-4480 y=0
+}

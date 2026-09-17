@@ -1,0 +1,32 @@
+spawn-at-startup "noctalia"
+
+spawn-sh-at-startup "signal-desktop --password-store=gnome-libsecret"
+spawn-sh-at-startup "1password --silent"
+//spawn-sh-at-startup "ibus start --type wayland"
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+environment {
+    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "qt6ct"
+
+    GTK_IM_MODULE "wayland"
+    XMODIFIERS "@im=ibus"
+    QT_IM_MODULES "wayland;ibus"
+    QT_IM_MODULE "ibus"
+}
+
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}
+
+include "src/input.kdl"
+include "src/layout.kdl"
+include "src/appearance.kdl"
+include "src/binds.kdl"
+include "src/output.kdl"
+
+include optional=true "noctalia.kdl"

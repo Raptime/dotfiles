@@ -1,0 +1,45 @@
+//
+// Workspaces
+//
+//workspace "browser"
+
+//
+// Noctalia settings
+//
+// Floating Noctalia settings window.
+window-rule {
+  match app-id="dev.noctalia.Noctalia"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+
+// Noctalia wallpaper
+layer-rule {
+    match namespace="^noctalia-wallpaper$"
+    place-within-backdrop true
+}
+
+// Noctalia bar
+layer-rule {
+    match namespace="^noctalia-bar-default$"
+
+    background-effect {
+        blur false
+        xray false
+    }
+}
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
+
+//
+// Firefox
+//
+window-rule {
+  match app-id="firefox"
+  open-maximized true
+  open-on-workspace "browser"
+}

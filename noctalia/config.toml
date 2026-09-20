@@ -1,7 +1,7 @@
 [bar.default]
 background_opacity = 0.0
 capsule = true
-center = [ "bar", "clock", "weather" ]
+center = [ "worldclock", "clock", "weather", "privacy" ]
 end = [ "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "battery", "session" ]
 margin_ends = 0
 start = [ "workspaces", "active_window" ]
@@ -39,6 +39,10 @@ auto_locate = true
 
 [lockscreen]
 fingerprint = false
+monitors = []
+
+[lockscreen_widgets]
+enabled = true
 
 [plugin_settings."nzlov/daily-wallpaper"]
 locale = "jp-JP"
@@ -62,8 +66,8 @@ wallpaper_scheme = "m3-fruit-salad"
 [theme.templates]
 builtin_ids = [ "gtk3", "gtk4", "kcolorscheme", "niri", "qt", "umbriel" ]
 
-[widget.bar]
-type = "noctalia/world_clock:bar"
+[widget.active_window]
+title_scroll = "on_hover"
 
 [widget.battery]
 hide_when_full = true
@@ -71,14 +75,17 @@ hide_when_full = true
 [widget.clock]
 format = "{:%a %d} | {:%H:%M}"
 
-[widget.media]
-enabled = false
-
 [widget.network]
 show_label = false
+
+[widget.privacy]
+hide_inactive = true
 
 [widget.volume]
 show_label = false
 
 [widget.weather]
 show_condition = false
+
+[widget.worldclock]
+type = "noctalia/world_clock:bar"

@@ -1,9 +1,43 @@
+/////////////////////////////////////////////////
+// Layout
 //
+layout {
+    background-color "transparent"
+    gaps 16
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    struts
+}
+
+/////////////////////////////////////////////////
 // Workspaces
 //
-//workspace "browser"
+workspace "browser"
 
+/////////////////////////////////////////////////
+// Defaults
 //
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
+
+// Make inactive windows semitransparent.
+window-rule {
+    match is-active=false
+
+    opacity 0.90
+}
+
+/////////////////////////////////////////////////
 // Noctalia settings
 //
 // Floating Noctalia settings window.
@@ -35,11 +69,22 @@ debug {
   honor-xdg-activation-with-invalid-serial
 }
 
-//
+/////////////////////////////////////////////////
 // Firefox
 //
 window-rule {
-  match app-id="firefox"
+  match at-startup=true app-id="firefox"
+
   open-maximized true
+  // open-floating true
   open-on-workspace "browser"
+}
+
+// Open the Firefox picture-in-picture window as floating with 480×270 size.
+window-rule {
+    match app-id="firefox$" title="^Picture-in-Picture$"
+
+    open-floating true
+    default-column-width { fixed 480; }
+    default-window-height { fixed 270; }
 }

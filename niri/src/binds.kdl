@@ -11,7 +11,7 @@ binds {
 
     // App Launch
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
-    Mod+E { spawn "nautilus"; }
+    Mod+E { spawn "nemo"; }
 
     // XF86
     XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }

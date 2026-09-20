@@ -24,7 +24,6 @@ hotkey-overlay {
 }
 
 include "src/input.kdl"
-include "src/layout.kdl"
 include "src/appearance.kdl"
 include "src/binds.kdl"
 include "src/output.kdl"

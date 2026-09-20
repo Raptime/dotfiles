@@ -16,6 +16,13 @@ environment {
     XMODIFIERS "@im=ibus"
     QT_IM_MODULES "wayland;ibus"
     QT_IM_MODULE "ibus"
+
+    GTK_CURSOR_THEME "Bibata-Modern-Classic"
+}
+
+cursor {
+    xcursor-theme "Bibata-Modern-Classic"
+    xcursor-size 24
 }
 
 hotkey-overlay {

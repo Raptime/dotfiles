@@ -65,6 +65,7 @@ wallpaper_scheme = "m3-fruit-salad"
 
 [theme.templates]
 builtin_ids = [ "gtk3", "gtk4", "kcolorscheme", "niri", "qt", "umbriel" ]
+community_ids = [ "papirus-icons" ]
 
 [widget.active_window]
 title_scroll = "on_hover"

@@ -1,7 +1,7 @@
 // Laptop monitor
 output "eDP-1" {
     mode "1920x1200"
-    variable-refresh-rate on-demand=true
+    variable-refresh-rate //on-demand=true
     scale 1.0
     transform "normal"
     position x=0 y=0

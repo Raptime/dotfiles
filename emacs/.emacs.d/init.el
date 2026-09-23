@@ -1,4 +1,6 @@
+;; -*- lexical-binding: nil; -*- 
 ;; init.el --- Emacs configuration
+
 
 ;; PACKAGES
 ;; --------------------------------------
@@ -10,7 +12,6 @@
 ;; Package list
 (setq package-selected-packages '(
 				  catppuccin-theme
-				  nord-theme
 				  lsp-mode
 				  rust-mode
 				  company
@@ -28,7 +29,6 @@
 (package-install-selected-packages)
 
 ;; Theme
-;; (load-theme 'nord t)
 (load-theme 'catppuccin :no-confirm)
 (setq catppuccin-flavor 'mocha) ;; or 'latte, 'macchiato, or 'mocha
 (catppuccin-reload)

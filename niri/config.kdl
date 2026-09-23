@@ -2,6 +2,7 @@ spawn-at-startup "noctalia"
 
 spawn-sh-at-startup "signal-desktop --password-store=gnome-libsecret"
 spawn-sh-at-startup "1password --silent"
+spawn-sh-at-startup "tailscale systray"
 //spawn-sh-at-startup "ibus start --type wayland"
 
 prefer-no-csd
@@ -17,7 +18,7 @@ environment {
     QT_IM_MODULES "wayland;ibus"
     QT_IM_MODULE "ibus"
 
-    GTK_CURSOR_THEME "Bibata-Modern-Classic"
+    GTK_CURSOR_THEME "Bibata-Modern-Ice"
 }
 
 cursor {

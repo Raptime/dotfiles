@@ -1,0 +1,10 @@
+profile laptop {
+	output eDP-1 enable
+}
+
+profile home {
+	output eDP-1 disable
+	output "LG Electronics LG ULTRAWIDE 0x0002B0EB" enable
+	output "Dell Inc. DELL U2212HM PF48H29J055L" enable
+}
+

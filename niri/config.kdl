@@ -1,7 +1,8 @@
 spawn-at-startup "noctalia"
+spawn-at-startup "kanshi"
 
 spawn-sh-at-startup "signal-desktop --password-store=gnome-libsecret"
-spawn-sh-at-startup "1password --silent"
+//spawn-sh-at-startup "1password --silent"
 spawn-sh-at-startup "tailscale systray"
 //spawn-sh-at-startup "ibus start --type wayland"
 

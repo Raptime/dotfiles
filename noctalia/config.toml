@@ -10,29 +10,22 @@ start = [ "workspaces", "active_window" ]
 show_events_card = false
 
 [idle]
-behavior_order = [ "dim", "lock", "screen-off", "lock-and-suspend" ]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
 
 [idle.behavior.lock]
 action = "lock"
 enabled = true
-timeout = 180.0
+timeout = 210.0
 
 [idle.behavior.lock-and-suspend]
 action = "lock_and_suspend"
 enabled = true
-timeout = 900.0
+timeout = 300.0
 
 [idle.behavior.screen-off]
 action = "screen_off"
 enabled = true
-timeout = 600.0
-
-[idle.behavior.dim]
-action = "command"
-command = "noctalia msg brightness-set 10"
-resume_command = "noctalia msg brightness-set 50"
-enabled = false
-timeout = 30.0
+timeout = 180.0
 
 [location]
 auto_locate = true
@@ -49,6 +42,9 @@ locale = "jp-JP"
 
 [plugins]
 enabled = [ "nzlov/daily-wallpaper", "noctalia/world_clock" ]
+
+[shell]
+polkit_agent = true
 
 [shell.greeter_sync]
 auto_sync = true

@@ -12,12 +12,12 @@ output "LG Electronics LG ULTRAWIDE 0x0002B0EB" {
     mode "2560x1080"
     scale 1.0
     transform "normal"
-    position x=-2560 y=0
+    position x=0 y=0
 }
 
 output "Dell Inc. DELL U2212HM PF48H29J055L" {
     mode "1920x1080"
     scale 1.0
     transform "normal"
-    position x=-4480 y=0
+    position x=-1920 y=0
 }

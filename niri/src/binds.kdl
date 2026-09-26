@@ -1,7 +1,9 @@
 binds {
     // Core Noctalia binds
+    Mod+Escape { spawn-sh "noctalia msg panel-toggle session"; }
     Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+S { spawn-sh "noctalia msg panel-toggle control-center"; }
+    Mod+P { spawn-sh "noctalia msg settings-toggle"; }
     Mod+L { spawn-sh "noctalia msg session lock"; }
 
     // Niri binds
@@ -123,8 +125,6 @@ binds {
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
-
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }

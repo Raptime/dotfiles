@@ -12,4 +12,6 @@ input {
     mouse
 
     trackpoint
+
+    workspace-auto-back-and-forth
 }

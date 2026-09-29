@@ -89,7 +89,8 @@ debug {
 // Firefox
 //
 window-rule {
-  match at-startup=true app-id="firefox"
+  // match at-startup=true app-id="firefox"
+  match app-id="firefox"
 
   open-maximized true
   // open-floating true

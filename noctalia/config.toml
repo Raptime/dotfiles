@@ -15,7 +15,7 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
 [idle.behavior.lock]
 action = "lock"
 enabled = true
-timeout = 210.0
+timeout = 180.0
 
 [idle.behavior.lock-and-suspend]
 action = "lock_and_suspend"
@@ -25,7 +25,7 @@ timeout = 300.0
 [idle.behavior.screen-off]
 action = "screen_off"
 enabled = true
-timeout = 180.0
+timeout = 210.0
 
 [location]
 auto_locate = true
@@ -41,7 +41,7 @@ enabled = true
 locale = "jp-JP"
 
 [plugins]
-enabled = [ "nzlov/daily-wallpaper", "noctalia/world_clock" ]
+enabled = [ "nzlov/daily-wallpaper", "noctalia/world_clock", "thaer99ob/default-apps" ]
 
 [shell]
 polkit_agent = true
@@ -60,8 +60,8 @@ source = "wallpaper"
 wallpaper_scheme = "m3-fruit-salad"
 
 [theme.templates]
-builtin_ids = [ "gtk3", "gtk4", "kcolorscheme", "niri", "qt", "umbriel" ]
-community_ids = [ "papirus-icons" ]
+builtin_ids = [ "gtk3", "gtk4", "kcolorscheme", "niri", "qt" ]
+community_ids = [ "pywalfox-beta4", "papirus-icons" ]
 
 [widget.active_window]
 title_scroll = "on_hover"

@@ -1,10 +1,10 @@
 profile laptop {
-	output eDP-1 enable
+	output eDP-1 enable position 0,0
 }
 
-profile home {
+profile laptop-home {
 	output eDP-1 disable
-	output "LG Electronics LG ULTRAWIDE 0x0002B0EB" enable
-	output "Dell Inc. DELL U2212HM PF48H29J055L" enable
+	output "LG Electronics LG ULTRAWIDE 0x0002B0EB" enable position 0,0
+	output "Dell Inc. DELL U2212HM PF48H29J055L" enable position 1920,0
 }
 

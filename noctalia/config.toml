@@ -3,7 +3,8 @@ background_opacity = 0.0
 capsule = true
 center = [ "worldclock", "clock", "weather", "privacy" ]
 end = [ "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "battery", "session" ]
-margin_ends = 0
+margin_edge = 16
+margin_ends = 16
 start = [ "workspaces", "active_window" ]
 
 [control_center.calendar]
@@ -60,7 +61,7 @@ source = "wallpaper"
 wallpaper_scheme = "m3-fruit-salad"
 
 [theme.templates]
-builtin_ids = [ "gtk3", "gtk4", "kcolorscheme", "niri", "qt" ]
+builtin_ids = [ "alacritty", "gtk3", "gtk4", "kcolorscheme", "niri", "qt" ]
 community_ids = [ "pywalfox-beta4", "papirus-icons" ]
 
 [widget.active_window]

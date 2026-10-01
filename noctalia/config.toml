@@ -3,8 +3,8 @@ background_opacity = 0.0
 capsule = true
 center = [ "worldclock", "clock", "weather", "privacy" ]
 end = [ "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "battery", "session" ]
-margin_edge = 16
-margin_ends = 16
+margin_edge = 8
+margin_ends = 8
 start = [ "workspaces", "active_window" ]
 
 [control_center.calendar]

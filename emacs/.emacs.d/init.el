@@ -85,7 +85,7 @@
 (scroll-bar-mode -1)                    ; hide scroll bar
 (horizontal-scroll-bar-mode -1)         ; hide horizontal scroll bar
 
-;; Emoji fonts: 😄, 🤦, 🏴󠁧󠁢󠁳󠁣󠁴󠁿
+;; Emoji fonts: 😄
 (set-fontset-font t 'symbol "Noto Color Emoji")
 (set-fontset-font t 'symbol "Apple Color Emoji" nil 'append)
 (set-fontset-font t 'symbol "Segoe UI Emoji" nil 'append)

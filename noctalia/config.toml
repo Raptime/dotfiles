@@ -70,7 +70,7 @@ wallpaper_scheme = "faithful"
 
 [theme.templates]
 builtin_ids = [ "alacritty", "gtk3", "gtk4", "kcolorscheme", "niri", "qt" ]
-community_ids = [ "pywalfox-beta4", "papirus-icons" ]
+community_ids = [ "pywalfox-beta4", "papirus-icons", "vscode" ]
 
 [widget.active_window]
 title_scroll = "on_hover"

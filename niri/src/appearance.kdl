@@ -50,7 +50,7 @@ window-rule {
 window-rule {
     match is-active=false
 
-    opacity 0.90
+    opacity 0.80
 }
 
 /////////////////////////////////////////////////
@@ -94,7 +94,7 @@ window-rule {
 
   open-maximized true
   // open-floating true
-  open-on-workspace "browser"
+  // open-on-workspace "browser"
 }
 
 // Open the Firefox picture-in-picture window as floating with 480×270 size.

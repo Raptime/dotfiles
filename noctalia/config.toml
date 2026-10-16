@@ -1,5 +1,5 @@
 [bar.default]
-background_opacity = 0.90
+background_opacity = 0.80
 capsule = true
 center = [ "worldclock", "clock", "weather", "privacy" ]
 end = [ "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "battery", "session" ]
@@ -43,8 +43,8 @@ auto_locate = true
 fingerprint = false
 monitors = [ "eDP-1", "DP-7" ]
 
-[lockscreen_widgets]
-enabled = true
+[plugin_settings."noctalia/world_clock"]
+panel_placement = "floating"
 
 [plugin_settings."nzlov/daily-wallpaper"]
 locale = "jp-JP"

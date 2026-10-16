@@ -2,7 +2,7 @@
 background_opacity = 0.80
 capsule = true
 center = [ "worldclock", "clock", "weather", "privacy" ]
-end = [ "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "battery", "session" ]
+end = [ "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "battery" ]
 margin_edge = 4
 margin_ends = 6
 start = [ "workspaces", "active_window" ]

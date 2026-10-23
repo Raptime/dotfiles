@@ -8,3 +8,9 @@ profile laptop-home {
 	output "Dell Inc. DELL U2212HM PF48H29J055L" enable position 1920,0
 }
 
+profile laptop-home-dell-en-panne {
+	output eDP-1 disable
+	output "LG Electronics LG ULTRAWIDE 0x0002B0EB" enable position 0,0
+	output "Unknown Unknown Unknown" disable
+}
+

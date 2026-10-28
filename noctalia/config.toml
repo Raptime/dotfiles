@@ -1,11 +1,12 @@
 [bar.default]
-background_opacity = 0.80
+background_opacity = 0.50
 capsule = true
-center = [ "worldclock", "clock", "weather", "privacy" ]
-end = [ "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "battery" ]
-margin_edge = 4
-margin_ends = 6
 start = [ "workspaces", "active_window" ]
+center = [ "worldclock", "clock", "weather", "privacy" ]
+end = [ "media", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "battery" ]
+margin_edge = 0
+margin_ends = 0
+radius = 0
 
 [control_center.calendar]
 show_events_card = false

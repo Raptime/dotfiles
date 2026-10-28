@@ -34,6 +34,15 @@ layout {
 }
 
 /////////////////////////////////////////////////
+// Overview
+//
+overview {
+  workspace-shadow {
+    off
+  }
+}
+
+/////////////////////////////////////////////////
 // Workspaces
 //
 //workspace "browser"
@@ -44,6 +53,11 @@ layout {
 window-rule {
     geometry-corner-radius 8
     clip-to-geometry true
+
+  background-effect {
+    blur true
+    xray false
+  }
 }
 
 // Make inactive windows semitransparent.
@@ -65,17 +79,32 @@ window-rule {
 }
 
 // Noctalia wallpaper
+// Option 1: Blurred - needs [niri/backdrop] in noctalia conf
 layer-rule {
-    match namespace="^noctalia-wallpaper$"
+    match namespace="^noctalia-backdrop"
+    place-within-backdrop true
+}
+// Option 2: Stationary
+/-layer-rule {
+    match namespace="^noctalia-wallpaper"
     place-within-backdrop true
 }
 
-// Noctalia bar
+// Noctalia surfaces
 layer-rule {
-    match namespace="^noctalia-bar-default$"
+    match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
 
     background-effect {
-        blur false
+        // blur false
+        xray false
+    }
+}
+
+// Noctalia window switcher
+layer-rule {
+    match namespace="noctalia-window-switcher"
+    background-effect {
+        blur true
         xray false
     }
 }

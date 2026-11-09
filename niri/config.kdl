@@ -16,10 +16,10 @@ environment {
     QT_QPA_PLATFORM "wayland"
     QT_QPA_PLATFORMTHEME "qt6ct"
 
-    GTK_IM_MODULE "wayland"
-    XMODIFIERS "@im=ibus"
-    QT_IM_MODULES "wayland;ibus"
-    QT_IM_MODULE "ibus"
+    // GTK_IM_MODULE "wayland"
+    // XMODIFIERS "@im=ibus"
+    // QT_IM_MODULES "wayland;ibus"
+    // QT_IM_MODULE "ibus"
 
     GTK_CURSOR_THEME "Bibata-Modern-Ice"
 }

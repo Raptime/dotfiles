@@ -1,13 +1,3 @@
-spawn-at-startup "noctalia"
-spawn-at-startup "kanshi"
-
-spawn-sh-at-startup "signal-desktop --password-store=gnome-libsecret"
-spawn-sh-at-startup "tailscale systray"
-// Already auto-launched
-// spawn-sh-at-startup "1password --silent"
-// Still needed?
-// spawn-sh-at-startup "ibus start --type wayland"
-
 prefer-no-csd
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
@@ -34,9 +24,11 @@ hotkey-overlay {
     hide-not-bound
 }
 
-include "src/input.kdl"
-include "src/appearance.kdl"
-include "src/binds.kdl"
-include "src/output.kdl"
+include "cfg/autostart.kdl"
+include "cfg/binds.kdl"
+include "cfg/input.kdl"
+include "cfg/layout.kdl"
+include "cfg/output.kdl"
+include "cfg/rules.kdl"
 
 include optional=true "noctalia.kdl"
